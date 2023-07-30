@@ -1,19 +1,57 @@
 const websocket = new WebSocket('ws://localhost:8765')
 
+function formataDolar(item, dataDiv, jsonMoeda) {
+    const text = dataDiv.querySelector(`[data-${item}] span`)
+    text.textContent = parseFloat(jsonMoeda[item]).toFixed(2).replace('.', ',')
+}
+
+function formataSimples(item, dataDiv, jsonMoeda) {
+    const text = dataDiv.querySelector(`[data-${item}] span`)
+    text.textContent = parseInt(jsonMoeda[item])
+}
+
+function incrementaDado(IDMoeda, jsonMoeda) {
+    const dataDiv = document.getElementById(IDMoeda);
+    // console.log(new Intl.NumberFormat('en', { style: 'currency', currency: 'USD', minimumFractionDigits: 2 })
+    //     .format(substituiValor('preco', dataDiv, jsonMoeda)))
+
+    formataSimples('rank', dataDiv, jsonMoeda)
+    formataDolar('preco', dataDiv, jsonMoeda)
+    formataDolar('capitalização', dataDiv, jsonMoeda)
+    formataSimples('fornecimento', dataDiv, jsonMoeda)
+    formataDolar('percentualVariado24h', dataDiv, jsonMoeda)
+
+
+    // substituiValor("historico.join('<br>')", dataDiv, jsonMoeda)
+
+
+    // const p = dataDiv.querySelector('[data-preco] span')
+    // p.textContent = jsonMoeda.preco
+
+    // const rank = DataDiv.querySelector('[data-rank]')
+    // rank.textContent += jsonMoeda.rank
+
+}
+
 websocket.onmessage = event => {
     const data = JSON.parse(event.data)
-    // console.log(data)
 
-    const bitcoinDataDiv = document.getElementById("bitcoin");
-    bitcoinDataDiv.innerHTML = `
-        <h2>Bitcoin</h2>
-        <p>Rank: ${data.bitcoin.rank}</p>
-        <p>Preço (USD): ${data.bitcoin.preco}</p>
-        <p>Capitalização de Mercado (USD): ${data.bitcoin.capitalização}</p>
-        <p>Fornecimento em Circulação: ${data.bitcoin.fornecimento}</p>
-        <p>Variação nas últimas 24h: ${data.bitcoin.percentualVariado24h}%</p>
-        <p>Veja as cotações anteriores dos últimos 5 dias:
-        <p>${data.bitcoin.historico.join('<br>')}`;
+    incrementaDado("bitcoin", data.bitcoin)
+
+    // const bitcoinDataDiv = document.getElementById("bitcoin");
+
+    // const dataRank = bitcoinDataDiv.querySelector('[data-rank]')
+    // dataRank.textContent += data.bitcoin.rank
+
+    // bitcoinDataDiv.innerHTML = `
+    //     <h2>Bitcoin</h2>
+    //     <p>Rank: ${ta.bitcoin.rank}</p>
+    //     <p>Preço (USD): ${data.bitcoin.preco}</p>
+    //     <p>Capitalização de Mercado (USD): ${data.bitcoin.capitalização}</p>
+    //     <p>Fornecimento em Circulação: ${data.bitcoin.fornecimento}</p>
+    //     <p>Variação nas últimas 24h: ${data.bitcoin.percentualVariado24h}%</p>
+    //     <p>Veja as cotações anteriores dos últimos 5 dias:</p>
+    //     <p>${data.bitcoin.historico.join('<br>')}</p>`;
 
     const ethereumDataDiv = document.getElementById("ethereum");
     ethereumDataDiv.innerHTML = `
