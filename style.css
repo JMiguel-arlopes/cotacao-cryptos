@@ -15,12 +15,11 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    overflow-y: hidden;
+    overflow-x: hidden;
 }
 
 .container {
     width: 100vw;
-    height: ;
     background-color: red;
     display: flex;
     flex-direction: column;
@@ -33,12 +32,17 @@ body {
     align-items: center;
 }
 
-h3 {
+.btn {
     background-color: gold;
     color: black;
     border: 3px solid black;
     padding: 5px 10px;
     border-radius: 20px;
+    opacity: .5;
+}
+
+.btn.active {
+    opacity: 1;
 }
 
 h4 {
@@ -64,15 +68,34 @@ h4:nth-of-type(even) {
     display: none;
 }
 
+
+.estatisticas {
+    margin: 1.5rem 10px;
+    border: 2px solid black;
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+.estatisticas h3 {
+    background: linear-gradient(rgb(189, 151, 0), rgb(80, 60, 0), rgb(189, 151, 0));
+    color: black;
+    font-size: 24px;
+    font-weight: 600;
+    text-shadow: -.2px .2px gray;
+    letter-spacing: 1.5px;
+    padding: 5px 10px;
+}
+
 .title-third {
-    background: linear-gradient(rgba(40, 40, 40, 1), #f5f5f5);
-    color: rgb(255, 225, 58);
+    /* background: linear-gradient(gold, black); */
+    color: black;
     text-shadow: -1px 1px black;
     border: 0;
-    letter-spacing: .5px;
-    border-top: 3px solid rgba(40, 40, 40, 1);
-    /* border-bottom: 3px solid black; */
-    padding: 8px 10px;
+    letter-spacing: 1px;
+    /* border-top: 3px solid black; */
+    border-bottom: 3px solid black;
+    /* padding: 5px 10px; */
+    margin: 10px 10px;
     border-radius: 0%;
 }
 
@@ -100,5 +123,35 @@ h2 {
     /* text-shadow: -.4px .4px gold; */
     letter-spacing: .5px;
     font-weight: 500;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+.list-prices {
+    background: linear-gradient(transparent, gold);
+    padding: .5rem;
+}
+
+.item-price {
+    overflow: hidden;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    border: 1px solid black;
+}
+
+.item-price p {
+    background-color: #eee;
+    padding: 3px 0;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 0 10px;
+}
+
+.item-price span {
+    display: block;
+    background-color: #333;
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 5px 10px;
+    width: 100%;
 }

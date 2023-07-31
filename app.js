@@ -1,80 +1,64 @@
-const websocket = new WebSocket('ws://localhost:8765')
+// const websocket = new WebSocket('ws://localhost:8765')
 
-function formataDolar(item, dataDiv, jsonMoeda) {
-    const text = dataDiv.querySelector(`[data-${item}] span`)
-    text.textContent = parseFloat(jsonMoeda[item]).toFixed(2).replace('.', ',')
+
+async function puxarDadosAPI() {
+    const response = await fetch('https://joaoarlopes.pythonanywhere.com/');
+
+    if (!response.ok) {
+        throw new Error('Erro na resposta da API');
+    }
+
+    const data = await response.json();
+    console.log(data);
 }
 
-function formataSimples(item, dataDiv, jsonMoeda) {
-    const text = dataDiv.querySelector(`[data-${item}] span`)
-    text.textContent = parseInt(jsonMoeda[item])
-}
-
-function incrementaDado(IDMoeda, jsonMoeda) {
-    const dataDiv = document.getElementById(IDMoeda);
-    // console.log(new Intl.NumberFormat('en', { style: 'currency', currency: 'USD', minimumFractionDigits: 2 })
-    //     .format(substituiValor('preco', dataDiv, jsonMoeda)))
-
-    formataSimples('rank', dataDiv, jsonMoeda)
-    formataDolar('preco', dataDiv, jsonMoeda)
-    formataDolar('capitalização', dataDiv, jsonMoeda)
-    formataSimples('fornecimento', dataDiv, jsonMoeda)
-    formataDolar('percentualVariado24h', dataDiv, jsonMoeda)
+puxarDadosAPI();
 
 
-    // substituiValor("historico.join('<br>')", dataDiv, jsonMoeda)
 
+// function formataDolar(item, dataDiv, jsonMoeda) {
+//     const text = dataDiv.querySelector(`[data-${item}] span`)
+//     text.textContent = parseFloat(jsonMoeda[item]).toFixed(2).replace('.', ',')
+// }
 
-    // const p = dataDiv.querySelector('[data-preco] span')
-    // p.textContent = jsonMoeda.preco
+// function formataSimples(item, dataDiv, jsonMoeda) {
+//     const text = dataDiv.querySelector(`[data-${item}] span`)
+//     text.textContent = parseInt(jsonMoeda[item])
+// }
 
-    // const rank = DataDiv.querySelector('[data-rank]')
-    // rank.textContent += jsonMoeda.rank
+// function listaPrecos(item, dataDiv, jsonMoeda) {
+//     for (i = 0; i < jsonMoeda.historico.length; i++) {
+//         const text = dataDiv.querySelector(`[data-${item}="${i}"] span`)
+//         text.textContent = jsonMoeda.historico[i]
+//     }
+// }
 
-}
+// function incrementaDado(IDMoeda, jsonMoeda) {
+//     const dataDiv = document.getElementById(IDMoeda);
+//     // console.log(new Intl.NumberFormat('en', { style: 'currency', currency: 'USD', minimumFractionDigits: 2 })
+//     //     .format(substituiValor('preco', dataDiv, jsonMoeda)))
 
-websocket.onmessage = event => {
-    const data = JSON.parse(event.data)
+//     formataSimples('rank', dataDiv, jsonMoeda)
+//     formataDolar('preco', dataDiv, jsonMoeda)
+//     formataDolar('capitalização', dataDiv, jsonMoeda)
+//     formataSimples('fornecimento', dataDiv, jsonMoeda)
+//     formataDolar('percentualVariado24h', dataDiv, jsonMoeda)
 
-    incrementaDado("bitcoin", data.bitcoin)
+//     listaPrecos('historico', dataDiv, jsonMoeda)
 
-    // const bitcoinDataDiv = document.getElementById("bitcoin");
+// }
 
-    // const dataRank = bitcoinDataDiv.querySelector('[data-rank]')
-    // dataRank.textContent += data.bitcoin.rank
+// websocket.onmessage = event => {
+//     const data = JSON.parse(event.data)
 
-    // bitcoinDataDiv.innerHTML = `
-    //     <h2>Bitcoin</h2>
-    //     <p>Rank: ${ta.bitcoin.rank}</p>
-    //     <p>Preço (USD): ${data.bitcoin.preco}</p>
-    //     <p>Capitalização de Mercado (USD): ${data.bitcoin.capitalização}</p>
-    //     <p>Fornecimento em Circulação: ${data.bitcoin.fornecimento}</p>
-    //     <p>Variação nas últimas 24h: ${data.bitcoin.percentualVariado24h}%</p>
-    //     <p>Veja as cotações anteriores dos últimos 5 dias:</p>
-    //     <p>${data.bitcoin.historico.join('<br>')}</p>`;
+//     incrementaDado("bitcoin", data.bitcoin)
+//     incrementaDado("ethereum", data.ethereum)
+//     incrementaDado("matic", data.polygon)
 
-    const ethereumDataDiv = document.getElementById("ethereum");
-    ethereumDataDiv.innerHTML = `
-        <h2>Ethereum</h2>
-        <p>Rank: ${data.ethereum.rank}</p>
-        <p>Preço (USD): ${data.ethereum.preco}</p>
-        <p>Capitalização de Mercado (USD): ${data.ethereum.capitalização}</p>
-        <p>Fornecimento em Circulação: ${data.ethereum.fornecimento}</p>
-        <p>Variação nas últimas 24h: ${data.ethereum.percentualVariado24h}%</p>
-        <p>Veja as cotações anteriores dos últimos 5 dias:
-        <p>${data.ethereum.historico.join('<br>')}`;
-
-    const polygonDataDiv = document.getElementById("matic");
-    polygonDataDiv.innerHTML = `
-        <h2>Polygon</h2>
-        <p>Rank: ${data.polygon.rank}</p>
-        <p>Preço (USD): ${data.polygon.preco}</p>
-        <p>Capitalização de Mercado (USD): ${data.polygon.capitalização}</p>
-        <p>Fornecimento em Circulação: ${data.polygon.fornecimento}</p>
-        <p>Variação nas últimas 24h: ${data.polygon.percentualVariado24h}%</p>
-        <p>Veja as cotações anteriores dos últimos 5 dias:
-        <p>${data.polygon.historico.join('<br>')}`;
-}
+//     for (let i = 0; i < data.bitcoin.historico.length; i++) {
+//         console.log(data.bitcoin.historico[i])
+//     }
+// }
 
 
 
@@ -85,11 +69,9 @@ const btn = document.querySelectorAll('h3')
 
 moedas.forEach(moeda => {
     moeda.addEventListener('click', (el) => {
-        let atributesCoin = el.target.dataset.box
-        console.log(atributesCoin)
+        const atributesCoin = el.target.dataset.box
 
         container.forEach(box => {
-            console.log(box.dataset.box)
             if (atributesCoin === box.dataset.box) {
                 box.classList.add('active')
             } else {

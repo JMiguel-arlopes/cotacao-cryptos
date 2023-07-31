@@ -13,10 +13,10 @@
 <body>
     <main>
         <div class="container">
-            <div class="cryptos">
-                <h3 class="active" data-box="1">Bitcoin</h3>
-                <h3 data-box="2">Ethereum</h3>
-                <h3 data-box="3">MATIC</h3>
+            <div class="cryptos" onclick="puxarDadosAPI()">
+                <h3 class="btn active" data-box="1">Bitcoin</h3>
+                <h3 class="btn" data-box="2">Ethereum</h3>
+                <h3 class="btn" data-box="3">MATIC</h3>
             </div>
 
             <div class="box active" id="bitcoin" data-box="1">
@@ -32,6 +32,56 @@
                     </p>
                 </div>
 
+                <div class="estatisticas">
+                    <h3>Estatisticas:</h3>
+                    <h4 data-rank>Rank da Moeda: <span></span>° lugar</h4>
+                    <h4 data-preco>Preço: US$ <span></span></h4>
+                    <h4 data-capitalização>Capitalização de Mercado: <br>US$ <span></span></h4>
+                    <h4 data-fornecimento>Fornecimento em Circulação: <br><span></span> Moedas</h4>
+                    <h4 data-percentualVariado24h>Variação nas últimas 24h: <span></span>%</h4>
+                </div>
+
+
+
+                <ul class="list-prices">
+                    <h3 class="title-third">Veja a cotação dos últimos 5 dias:</h3>
+                    <li class="item-price" data-historico="0">
+                        <p>Há um dia:</p>
+                        <span></span>
+                    </li>
+                    <li class="item-price" data-historico="1">
+                        <p>Há dois dias:</p>
+                        <span></span>
+                    </li>
+                    <li class="item-price" data-historico="2">
+                        <p>Há três dias:</p>
+                        <span></span>
+                    </li>
+                    <li class="item-price" data-historico="3">
+                        <p>Há quatro dias:</p>
+                        <span></span>
+                    </li>
+                    <li class="item-price" data-historico="4">
+                        <p>Há cinco dias:</p>
+                        <span></span>
+                    </li>
+                </ul>
+            </div>
+            <div class="box" id="ethereum" data-box="2">
+                <div class="about">
+                    <h2>Ethereum</h2>
+                    <p>
+                        A Ethereum se destaca como uma plataforma de criptomoeda
+                        que vai além das funcionalidades do Bitcoin. Baseada em contratos
+                        inteligentes, permite a criação de aplicativos descentralizados (DApps)
+                        e tokens personalizados. Com uma comunidade ativa, a Ethereum é conhecida
+                        por sua flexibilidade e adaptabilidade em diversos setores, impulsionada por
+                        seu token nativo, o Ether (ETH), que alimenta a rede e remunera os mineradores.
+                        Sua abordagem mais ampla e suas aplicações variadas a tornam uma escolha
+                        proeminente para desenvolvedores e empresas em busca de inovação na tecnologia blockchain.
+                    </p>
+                </div>
+
                 <h3 class="title-third">Informações do Mercado:</h3>
                 <h4 data-rank>Rank da Moeda: <span></span>° lugar</h4>
                 <h4 data-preco>Preço: US$ <span></span></h4>
@@ -41,28 +91,36 @@
 
                 <p>Veja as principais mudanças dos ultimos 5 dias:</p>
             </div>
-            <div class="box" id="ethereum" data-box="2">
-                A Ethereum se destaca como uma plataforma de criptomoeda
-                que vai além das funcionalidades do Bitcoin. Baseada em contratos
-                inteligentes, permite a criação de aplicativos descentralizados (DApps)
-                e tokens personalizados. Com uma comunidade ativa, a Ethereum é conhecida
-                por sua flexibilidade e adaptabilidade em diversos setores, impulsionada por
-                seu token nativo, o Ether (ETH), que alimenta a rede e remunera os mineradores.
-                Sua abordagem mais ampla e suas aplicações variadas a tornam uma escolha
-                proeminente para desenvolvedores e empresas em busca de inovação na tecnologia blockchain.
-            </div>
             <div class="box" id="matic" data-box="3">
-                A Polygon (MATIC) é uma plataforma de escalabilidade da Ethereum que soluciona problemas de taxas
-                elevadas
-                e escalabilidade. Com base em sidechains, conecta-se à rede Ethereum principal, permitindo transações
-                mais
-                rápidas e econômicas. Seu token nativo, o MATIC, é essencial para a governança e segurança da
-                plataforma,
-                além de pagar as taxas de transação e recompensar os validadores da rede. Com uma infraestrutura que
-                viabiliza
-                a criação de aplicativos descentralizados (DApps) mais eficientes, a Polygon está se tornando uma opção
-                popular
-                para inovação e crescimento no ecossistema de blockchain.
+                <div class="about">
+                    <h2>MATIC</h2>
+                    <p>
+                        A Polygon (MATIC) é uma plataforma de escalabilidade da Ethereum que soluciona problemas de
+                        taxas
+                        elevadas
+                        e escalabilidade. Com base em sidechains, conecta-se à rede Ethereum principal, permitindo
+                        transações
+                        mais
+                        rápidas e econômicas. Seu token nativo, o MATIC, é essencial para a governança e segurança da
+                        plataforma,
+                        além de pagar as taxas de transação e recompensar os validadores da rede. Com uma infraestrutura
+                        que
+                        viabiliza
+                        a criação de aplicativos descentralizados (DApps) mais eficientes, a Polygon está se tornando
+                        uma opção
+                        popular
+                        para inovação e crescimento no ecossistema de blockchain.
+                    </p>
+                </div>
+
+                <h3 class="title-third">Informações do Mercado:</h3>
+                <h4 data-rank>Rank da Moeda: <span></span>° lugar</h4>
+                <h4 data-preco>Preço: US$ <span></span></h4>
+                <h4 data-capitalização>Capitalização de Mercado: <br>US$ <span></span></h4>
+                <h4 data-fornecimento>Fornecimento em Circulação: <br><span></span> Moedas</h4>
+                <h4 data-percentualVariado24h>Variação nas últimas 24h: <span></span>%</h4>
+
+                <p>Veja as principais mudanças dos ultimos 5 dias:</p>
             </div>
         </div>
     </main>
