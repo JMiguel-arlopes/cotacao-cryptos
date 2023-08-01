@@ -18,18 +18,29 @@ body {
     overflow-x: hidden;
 }
 
+header {
+    width: 100%;
+    background: linear-gradient(red, darkblue);
+}
+
 .container {
     width: 100vw;
-    background-color: red;
     display: flex;
     flex-direction: column;
 }
 
+
+
+/* moedas */
+
 .cryptos {
+    background-color: rgb(0, 0, 0);
+    padding: .2rem .4rem;
     display: flex;
-    padding: 1rem 2rem;
+    margin: 1rem 2rem;
     justify-content: space-between;
     align-items: center;
+    border-radius: 40px;
 }
 
 .btn {
@@ -39,41 +50,73 @@ body {
     padding: 5px 10px;
     border-radius: 20px;
     opacity: .5;
+    transition: .4s;
 }
 
 .btn.active {
     opacity: 1;
+    transform: scale(1.12);
 }
 
-h4 {
-    color: rgb(0, 170, 0);
-    background-color: #f5f5f5;
-    font-size: 18px;
-    font-weight: 600;
-    padding: .5rem 1rem;
-    letter-spacing: 1px;
-    text-shadow: -.8px .8px #000;
-}
 
-h4:nth-of-type(even) {
-    text-shadow: -.8px .8px white;
-    background-color: #111;
-}
+
+/* Sobre a Moeda */
 
 .box {
-    background-color: rgba(40, 40, 40, 1);
+    background: linear-gradient(black, rgba(40, 40, 40, 1));
     text-align: start;
     max-width: 100%;
-    /* padding: 1rem 2rem; */
     display: none;
 }
 
+.box.active {
+    display: block;
+}
+
+.about {
+    margin: 25px 1rem;
+}
+
+.about p {
+    color: #fff;
+    letter-spacing: .5px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.about h2 {
+    color: gold;
+    letter-spacing: 2px;
+    text-shadow: -1px 1px rgb(255, 255, 166),
+        0 0 2px gold;
+    border-bottom: 3px solid gold;
+    font-size: 28px;
+    font-weight: 900;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+
+
+
+/* Estatisticas */
 
 .estatisticas {
-    margin: 1.5rem 10px;
-    border: 2px solid black;
+    margin: 1.5rem 1rem;
+    border: 2px solid white;
     overflow: hidden;
-    border-radius: 20px;
+    border-radius: 12px;
+    box-shadow:
+        /* 0 0 5px white, */
+        0 0 12px rgb(189, 151, 0);
+}
+
+.estatisticas div {
+    background-color: #f5f5f5;
+    padding: .5rem 1rem;
+}
+
+.estatisticas div:nth-of-type(even) {
+    background-color: #000;
 }
 
 .estatisticas h3 {
@@ -86,72 +129,105 @@ h4:nth-of-type(even) {
     padding: 5px 10px;
 }
 
-.title-third {
-    /* background: linear-gradient(gold, black); */
+.estatisticas h4 {
     color: black;
-    text-shadow: -1px 1px black;
-    border: 0;
+    display: inline-block;
+    font-size: 18px;
+    font-weight: 600;
+    /* padding: .5rem 1rem; */
     letter-spacing: 1px;
-    /* border-top: 3px solid black; */
-    border-bottom: 3px solid black;
-    /* padding: 5px 10px; */
-    margin: 10px 10px;
-    border-radius: 0%;
+    text-shadow: -1px 1px #000;
 }
 
-.box.active {
-    display: block;
+.estatisticas div:nth-of-type(even) h4 {
+    color: white;
+    /* text-shadow: -.8px .8px white;
+    background-color: #000; */
 }
 
-.about {
-    margin: 10px;
+.estatisticas span {
+    color: rgb(0, 170, 0);
+    font-size: 18px;
+    font-weight: 600;
+
+    letter-spacing: 1px;
+    text-shadow: -1.2px 1.5px #000;
 }
 
-h2 {
-    color: gold;
-    letter-spacing: 2px;
-    text-shadow: -1.5px 1.5px black;
-    border-bottom: 3px solid gold;
-    font-size: 28px;
-    font-weight: 900;
-    margin-bottom: 10px;
-    padding-bottom: 10px;
-}
-
-.about p {
-    color: #fff;
-    /* text-shadow: -.4px .4px gold; */
-    letter-spacing: .5px;
-    font-weight: 500;
-    margin-bottom: 10px;
-}
+/* Lista de preços */
 
 .list-prices {
-    background: linear-gradient(transparent, gold);
-    padding: .5rem;
+    background: linear-gradient(transparent, rgb(131, 111, 0));
+    padding: .65rem;
+}
+
+.title-third {
+    /* background: linear-gradient(red, black); */
+    font-size: 20px;
+    padding: 5px 10px;
+    color: white;
+    border-bottom: 3px solid gold;
+    text-shadow: 0 0 10px gold, 0 0 3px gold;
+    /* border: 3px solid black; */
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    border-radius: 5px;
 }
 
 .item-price {
     overflow: hidden;
-    border-radius: 10px;
+    border-radius: 8px;
     margin-bottom: 10px;
-    border: 1px solid black;
+    border: 1px solid white;
+    box-shadow: 0 0 2px white;
 }
 
 .item-price p {
+    display: block;
     background-color: #eee;
-    padding: 3px 0;
     font-size: 16px;
     font-weight: 700;
-    padding: 0 10px;
+    padding: 3px 10px;
 }
 
 .item-price span {
-    display: block;
-    background-color: #333;
-    color: white;
+    background-color: #111;
+    color: rgb(0, 170, 0);
     font-size: 14px;
-    font-weight: 500;
-    padding: 5px 10px;
+    font-weight: 600;
+    padding: .5rem 1rem;
+    letter-spacing: 1px;
+    display: block;
     width: 100%;
+}
+
+
+
+/* rodape */
+
+footer {
+    text-align: center;
+    color: white;
+    padding: 5px 0;
+}
+
+footer p {
+    font-size: 10px;
+    margin-bottom: 2px;
+}
+
+footer h2 {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: .4px;
+}
+
+footer a {
+    text-decoration: none;
+    color: rgb(145, 145, 145);
+}
+
+footer a:hover {
+    text-decoration: none;
+    color: rgb(170, 145, 0);
 }

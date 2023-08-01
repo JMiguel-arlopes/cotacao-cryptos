@@ -11,14 +11,15 @@
 </head>
 
 <body>
+    <header>
+        <div class="cryptos">
+            <h3 class="btn active" data-box="1">Bitcoin</h3>
+            <h3 class="btn" data-box="2">Ethereum</h3>
+            <h3 class="btn" data-box="3">MATIC</h3>
+        </div>
+    </header>
     <main>
         <div class="container">
-            <div class="cryptos" onclick="puxarDadosAPI()">
-                <h3 class="btn active" data-box="1">Bitcoin</h3>
-                <h3 class="btn" data-box="2">Ethereum</h3>
-                <h3 class="btn" data-box="3">MATIC</h3>
-            </div>
-
             <div class="box active" id="bitcoin" data-box="1">
                 <div class="about">
                     <h2>Bitcoin</h2>
@@ -34,14 +35,27 @@
 
                 <div class="estatisticas">
                     <h3>Estatisticas:</h3>
-                    <h4 data-rank>Rank da Moeda: <span></span>° lugar</h4>
-                    <h4 data-preco>Preço: US$ <span></span></h4>
-                    <h4 data-capitalização>Capitalização de Mercado: <br>US$ <span></span></h4>
-                    <h4 data-fornecimento>Fornecimento em Circulação: <br><span></span> Moedas</h4>
-                    <h4 data-percentualVariado24h>Variação nas últimas 24h: <span></span>%</h4>
+                    <div data-rank>
+                        <h4>Rank da Moeda:</h4>
+                        <span></span>
+                    </div>
+                    <div data-preco>
+                        <h4>Preço:</h4>
+                        <span></span>
+                    </div>
+                    <div data-capitalização>
+                        <h4>Capitalização de Mercado:</h4>
+                        <br><span></span>
+                    </div>
+                    <div data-fornecimento>
+                        <h4>Fornecimento em Circulação:</h4>
+                        <br><span></span>
+                    </div>
+                    <div data-percentualVariado24h>
+                        <h4>Variação nas últimas 24h:</h4>
+                        <span></span>
+                    </div>
                 </div>
-
-
 
                 <ul class="list-prices">
                     <h3 class="title-third">Veja a cotação dos últimos 5 dias:</h3>
@@ -67,6 +81,7 @@
                     </li>
                 </ul>
             </div>
+
             <div class="box" id="ethereum" data-box="2">
                 <div class="about">
                     <h2>Ethereum</h2>
@@ -82,15 +97,55 @@
                     </p>
                 </div>
 
-                <h3 class="title-third">Informações do Mercado:</h3>
-                <h4 data-rank>Rank da Moeda: <span></span>° lugar</h4>
-                <h4 data-preco>Preço: US$ <span></span></h4>
-                <h4 data-capitalização>Capitalização de Mercado: <br>US$ <span></span></h4>
-                <h4 data-fornecimento>Fornecimento em Circulação: <br><span></span> Moedas</h4>
-                <h4 data-percentualVariado24h>Variação nas últimas 24h: <span></span>%</h4>
+                <div class="estatisticas">
+                    <h3>Estatisticas:</h3>
+                    <div data-rank>
+                        <h4>Rank da Moeda:</h4>
+                        <span></span>
+                    </div>
+                    <div data-preco>
+                        <h4>Preço:</h4>
+                        <span></span>
+                    </div>
+                    <div data-capitalização>
+                        <h4>Capitalização de Mercado:</h4>
+                        <br><span></span>
+                    </div>
+                    <div data-fornecimento>
+                        <h4>Fornecimento em Circulação:</h4>
+                        <br><span></span>
+                    </div>
+                    <div data-percentualVariado24h>
+                        <h4>Variação nas últimas 24h:</h4>
+                        <span></span>
+                    </div>
+                </div>
 
-                <p>Veja as principais mudanças dos ultimos 5 dias:</p>
+                <ul class="list-prices">
+                    <h3 class="title-third">Veja a cotação dos últimos 5 dias:</h3>
+                    <li class="item-price" data-historico="0">
+                        <p>Há um dia:</p>
+                        <span></span>
+                    </li>
+                    <li class="item-price" data-historico="1">
+                        <p>Há dois dias:</p>
+                        <span></span>
+                    </li>
+                    <li class="item-price" data-historico="2">
+                        <p>Há três dias:</p>
+                        <span></span>
+                    </li>
+                    <li class="item-price" data-historico="3">
+                        <p>Há quatro dias:</p>
+                        <span></span>
+                    </li>
+                    <li class="item-price" data-historico="4">
+                        <p>Há cinco dias:</p>
+                        <span></span>
+                    </li>
+                </ul>
             </div>
+
             <div class="box" id="matic" data-box="3">
                 <div class="about">
                     <h2>MATIC</h2>
@@ -113,17 +168,61 @@
                     </p>
                 </div>
 
-                <h3 class="title-third">Informações do Mercado:</h3>
-                <h4 data-rank>Rank da Moeda: <span></span>° lugar</h4>
-                <h4 data-preco>Preço: US$ <span></span></h4>
-                <h4 data-capitalização>Capitalização de Mercado: <br>US$ <span></span></h4>
-                <h4 data-fornecimento>Fornecimento em Circulação: <br><span></span> Moedas</h4>
-                <h4 data-percentualVariado24h>Variação nas últimas 24h: <span></span>%</h4>
+                <div class="estatisticas">
+                    <h3>Estatisticas:</h3>
+                    <div data-rank>
+                        <h4>Rank da Moeda:</h4>
+                        <span></span>
+                    </div>
+                    <div data-preco>
+                        <h4>Preço:</h4>
+                        <span></span>
+                    </div>
+                    <div data-capitalização>
+                        <h4>Capitalização de Mercado:</h4>
+                        <br><span></span>
+                    </div>
+                    <div data-fornecimento>
+                        <h4>Fornecimento em Circulação:</h4>
+                        <br><span></span>
+                    </div>
+                    <div data-percentualVariado24h>
+                        <h4>Variação nas últimas 24h:</h4>
+                        <span></span>
+                    </div>
+                </div>
 
-                <p>Veja as principais mudanças dos ultimos 5 dias:</p>
+                <ul class="list-prices">
+                    <h3 class="title-third">Veja a cotação dos últimos 5 dias:</h3>
+                    <li class="item-price" data-historico="0">
+                        <p>Há um dia:</p>
+                        <span></span>
+                    </li>
+                    <li class="item-price" data-historico="1">
+                        <p>Há dois dias:</p>
+                        <span></span>
+                    </li>
+                    <li class="item-price" data-historico="2">
+                        <p>Há três dias:</p>
+                        <span></span>
+                    </li>
+                    <li class="item-price" data-historico="3">
+                        <p>Há quatro dias:</p>
+                        <span></span>
+                    </li>
+                    <li class="item-price" data-historico="4">
+                        <p>Há cinco dias:</p>
+                        <span></span>
+                    </li>
+                </ul>
             </div>
         </div>
     </main>
+
+    <footer>
+        <p>Dados retirados da CoinCap</p>
+        <h2>Created by <a href="#">João Miguel A. Lopes</a> | all rights reserved</h2>
+    </footer>
 </body>
 
 </html>

@@ -31,18 +31,33 @@ function incrementaDado(IDMoeda, jsonMoeda) {
     // console.log(new Intl.NumberFormat('en', { style: 'currency', currency: 'USD', minimumFractionDigits: 2 })
     //     .format(substituiValor('preco', dataDiv, jsonMoeda)))
 
-    formataSimples('rank', dataDiv, jsonMoeda)
+    formataRank('rank', dataDiv, jsonMoeda)
     formataDolar('preco', dataDiv, jsonMoeda)
     formataDolar('capitalização', dataDiv, jsonMoeda)
-    formataSimples('fornecimento', dataDiv, jsonMoeda)
-    formataDolar('percentualVariado24h', dataDiv, jsonMoeda)
+    formataQuantidadeMoedas('fornecimento', dataDiv, jsonMoeda)
+    formataPorcentagem('percentualVariado24h', dataDiv, jsonMoeda)
 
     listaPrecos('historico', dataDiv, jsonMoeda)
 }
 
 function formataDolar(item, dataDiv, jsonMoeda) {
     const text = dataDiv.querySelector(`[data-${item}] span`)
-    text.textContent = parseFloat(jsonMoeda[item]).toFixed(2).replace('.', ',')
+    text.textContent = parseFloat(jsonMoeda[item]).toLocaleString('en', { style: 'currency', currency: 'USD' })
+}
+
+function formataPorcentagem(item, dataDiv, jsonMoeda) {
+    const text = dataDiv.querySelector(`[data-${item}] span`)
+    text.textContent = parseFloat(jsonMoeda[item]).toFixed(2).replace('.', ',') + '%'
+}
+
+function formataRank(item, dataDiv, jsonMoeda) {
+    const text = dataDiv.querySelector(`[data-${item}] span`)
+    text.textContent = parseInt(jsonMoeda[item]) + '° lugar'
+}
+
+function formataQuantidadeMoedas(item, dataDiv, jsonMoeda) {
+    const text = dataDiv.querySelector(`[data-${item}] span`)
+    text.textContent = parseInt(jsonMoeda[item]) + ' Moedas'
 }
 
 function formataSimples(item, dataDiv, jsonMoeda) {
@@ -53,7 +68,7 @@ function formataSimples(item, dataDiv, jsonMoeda) {
 function listaPrecos(item, dataDiv, jsonMoeda) {
     for (i = 0; i < jsonMoeda.historico.length; i++) {
         const text = dataDiv.querySelector(`[data-${item}="${i}"] span`)
-        text.textContent = jsonMoeda.historico[i]
+        text.textContent = parseFloat(jsonMoeda.historico[i]).toLocaleString('en', { style: 'currency', currency: 'USD' })
     }
 }
 
