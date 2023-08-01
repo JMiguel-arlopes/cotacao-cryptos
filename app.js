@@ -2,7 +2,7 @@
 
 async function puxarDadosAPI() {
     try {
-        const response = await fetch('http://joaoarlopes.pythonanywhere.com/');
+        const response = await fetch('https://joaoarlopes.pythonanywhere.com/');
 
         if (!response.ok) {
             throw new Error('Erro na resposta da API');
