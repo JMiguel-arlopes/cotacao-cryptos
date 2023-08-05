@@ -1,106 +1,66 @@
-# import requests
-# import json
-# import asyncio
-# import websockets
+from flask import Flask, jsonify, g
+import requests
 
+# Código posto na núvem da pythonanywhere para a API ir para WEB.
+# obs: Usei a API da CoinCap em Python para puxar dados das moedas Bitcoin, MATIC e Ethereum e fiz uma API própria
+# para puxá-la utilizando Javascript e assim inserir ao Front-End
 
-# def main():
-#     # inicializa o servidor WebSocket na porta 8765
-#     start_server = websockets.serve(enviar_dados, "localhost", 8765)
-#     asyncio.get_event_loop().run_until_complete(start_server)
-#     asyncio.get_event_loop().run_forever()
+app = Flask(__name__)
+def add_cors_headers(response):
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
+    response.headers['Access-Control-Allow-Methods'] = 'GET, POST, PUT, DELETE, OPTIONS'
+    return response
 
+def obter_dados_moeda(coin):
+    link = f'https://api.coincap.io/v2/assets/{coin}'
+    url = requests.get(link).json()
+    data = url['data']
 
-# async def enviar_dados(websockets, _):
+    nome = data['name']
+    simbolo = data['symbol']
+    rank = data['rank']
+    preco = data['priceUsd']
+    capitalizacao = data['marketCapUsd']
+    fornecimento = data['supply']
+    variacao_percentual_24h = data['changePercent24Hr']
 
-#     while True:
-#         #obtém os dados atualizados da moeda
-#         bitcoin_data = crypto_data("bitcoin")
-#         ethereum_data = crypto_data("ethereum")
-#         polygon_data = crypto_data("polygon")
+    url_historico = requests.get(f"https://api.coincap.io/v2/assets/{coin}/history?interval=d1&limit=5").json()['data']
+    list_historico = [past_price['priceUsd'] for past_price in url_historico[:5]]
 
-#         # construir um dicionário para enviar ao Front 
-#         data = {
-#             "bitcoin": bitcoin_data,
-#             "ethereum": ethereum_data,
-#             "polygon": polygon_data
-#         }
+    resposta = {
+        "nome": nome,
+        "simbolo": simbolo,
+        "rank": rank,
+        "preco": preco,
+        "capitalização": capitalizacao,
+        "fornecimento": fornecimento,
+        "percentualVariado24h": variacao_percentual_24h,
+        "historico": list_historico
+    }
 
-#         await websockets.send(json.dumps(data))
+    return resposta
 
-#         # aguarda um intervalo de tempo para reiniciar o looping
-#         await asyncio.sleep(5)
+@app.route('/')
+def root():
+    # Verifica se já existe um contexto de aplicativo
+    if not hasattr(g, 'app_context'):
+        g.app_context = app.app_context()
 
-    
-# # ideia: mostre a variação
+    # Chama a função para obter os dados das moeda
+    with app.app_context():
+        bitcoin_data = obter_dados_moeda("bitcoin")
+        ethereum_data = obter_dados_moeda("ethereum")
+        polygon_data = obter_dados_moeda("polygon")
 
-# # bitcoin_realTime = requests.get('https://economia.awesomeapi.com.br/json/last/BTC-BRL').json()
-# # bitcoin_preco_realTime = bitcoin_realTime["BTCBRL"]["bid"]
-# # print(f"a cotação atual do Bitcoin é R${bitcoin_preco_realTime},00")
+    # Retorno para a API
+    resposta = {
+        "bitcoin": bitcoin_data,
+        "ethereum": ethereum_data,
+        "polygon": polygon_data
+    }
+    print(resposta)
+    return jsonify(resposta)
 
-# # bitcoin_past = requests.get('https://economia.awesomeapi.com.br/BTC-BRL/5').json()
-
-# # for artigos in bitcoin_past:
-# #     position = bitcoin_past.index(artigos) + 1
-# #     cotacao = artigos["bid"]
-#     # print(f"A {position} cotação atrás, o BitCoin custava R${cotacao},00")
-
-# def crypto_data(coin):
-#     # Inserindo dados atuais da moeda
-#     url = requests.get(f'https://api.coincap.io/v2/assets/{coin}').json()
-
-#     data = url['data']
-    
-#     nome = data['name']
-#     simbolo = data['symbol']
-#     rank = data['rank']
-#     preco = data['priceUsd']
-#     capitalizacao = data['marketCapUsd']
-#     fornecimento = data['supply']
-#     variacao_percentual_24h = data['changePercent24Hr']
-#     print( variacao_percentual_24h)
-
-#     # return {
-#     #     "nome": nome,
-#     #     "simbolo": simbolo,
-#     #     "rank": rank,
-#     #     "preco": preco, 
-#     #     "capitalização": capitalizacao,
-#     #     "fornecimento": fornecimento,
-#     #     "percentualVariado24h": variacao_percentual_24h 
-#     # }
-
-#     # print(f"\nA {nome}, com símbolo de {simbolo}, está em {rank}° lugar no rank")
-#     # print(f"Seu preço atual é US${preco}")
-#     # print(f"Sua capitalização de mercado é US${capitalizacao}")
-#     # print(f"A Quantidade total de {nome}'s em circulação no mercado é {fornecimento}")
-#     # print(f"A variação no preço da {nome} nas ultimas 24h é de {variacao_percentual_24h}%")
-
-#     # inserindo histórico dos ultimos 5 dias da moeda
-#     url_historico = requests.get(f"https://api.coincap.io/v2/assets/{coin}/history?interval=d1&limit=5").json()['data']
-
-#     # print("\nVeja o Histórico de Preços da Moedas nos ultimos 5 dias:")
-#     list_historico = []
-#     for past_price in url_historico[:5]:
-#         list_historico.append(past_price['priceUsd'])
-#         # historico_data = past_price['date']
-#         # historico_timestamp = past_price['time']
-
-#     return {
-#         "nome": nome,
-#         "simbolo": simbolo,
-#         "rank": rank,
-#         "preco": preco, 
-#         "capitalização": capitalizacao,
-#         "fornecimento": fornecimento,
-#         "percentualVariado24h": variacao_percentual_24h,
-#         "historico": list_historico
-#     }
-#         # print(f"\nA moeda custava US${historico_preco} no dia {historico_data}")
-#         # print(f"O timestamp era {historico_timestamp}seg")
-
-# main()
-# # crypto_data("bitcoin")
-# # crypto_data("ethereum")
-# # crypto_data("polygon")
-
+if __name__ == '__main__':
+    app.run()
