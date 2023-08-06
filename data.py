@@ -2,15 +2,13 @@ from flask import Flask, jsonify, g
 import requests
 
 # Código posto na núvem da pythonanywhere para a API ir para WEB.
-# obs: Usei a API da CoinCap em Python para puxar dados das moedas Bitcoin, MATIC e Ethereum e fiz uma API própria
+
+# obs:
+# Utilizei a API da CoinCap em Python para puxar dados das moedas Bitcoin, MATIC e Ethereum
+# com auxílio do mini-Framework Flask para criar uma API própria e jogá-la na WEB
 # para puxá-la utilizando Javascript e assim inserir ao Front-End
 
 app = Flask(__name__)
-def add_cors_headers(response):
-    response.headers['Access-Control-Allow-Origin'] = '*'
-    response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
-    response.headers['Access-Control-Allow-Methods'] = 'GET, POST, PUT, DELETE, OPTIONS'
-    return response
 
 def obter_dados_moeda(coin):
     link = f'https://api.coincap.io/v2/assets/{coin}'

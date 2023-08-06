@@ -1,5 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&family=Roboto&display=swap');
 
+:root {
+    --bg-header: linear-gradient(red, darkblue);
+    --main-color: rgb(255, 217, 0);
+    --black: #000;
+    --black-secundary: #111;
+    --white: #fff;
+    --dollar-sign: rgb(0, 170, 0);
+}
+
 * {
     padding: 0;
     margin: 0;
@@ -7,7 +16,7 @@
 }
 
 body {
-    background-color: #111;
+    background-color: var(--black-secundary);
     font-family: 'Poppins', sans-serif;
     font-family: 'Roboto', sans-serif;
     min-height: 100vh;
@@ -20,7 +29,7 @@ body {
 
 header {
     width: 100%;
-    background: linear-gradient(red, darkblue);
+    background: var(--bg-header);
 }
 
 .container {
@@ -29,24 +38,22 @@ header {
     flex-direction: column;
 }
 
-
-
 /* moedas */
-
 .cryptos {
-    background-color: rgb(0, 0, 0);
-    padding: .2rem .4rem;
+    background-color: var(--black);
     display: flex;
-    margin: 1rem 2rem;
     justify-content: space-between;
     align-items: center;
+    padding: .2rem .4rem;
+    margin: 1rem 2rem;
     border-radius: 40px;
 }
 
 .btn {
-    background-color: gold;
-    color: black;
-    border: 3px solid black;
+    cursor: pointer;
+    background-color: var(--main-color);
+    color: var(--black);
+    border: 3px solid var(--black);
     padding: 5px 10px;
     border-radius: 20px;
     opacity: .5;
@@ -58,12 +65,9 @@ header {
     transform: scale(1.12);
 }
 
-
-
 /* Sobre a Moeda */
-
 .box {
-    background: linear-gradient(black, rgba(40, 40, 40, 1));
+    background: linear-gradient(var(--black), rgba(40, 40, 40, 1));
     text-align: start;
     max-width: 100%;
     display: none;
@@ -78,36 +82,32 @@ header {
 }
 
 .about p {
-    color: #fff;
+    color: var(--white);
     letter-spacing: .5px;
     font-weight: 500;
     margin-bottom: 10px;
 }
 
 .about h2 {
-    color: gold;
+    color: var(--main-color);
     letter-spacing: 2px;
-    text-shadow: -1px 1px rgb(255, 255, 166),
-        0 0 2px gold;
-    border-bottom: 3px solid gold;
+    text-shadow:
+        -1px 1px rgb(255, 255, 166),
+        0 0 2px var(--main-color);
+    border-bottom: 3px solid var(--main-color);
     font-size: 28px;
     font-weight: 900;
     margin-bottom: 10px;
     padding-bottom: 10px;
 }
 
-
-
 /* Estatisticas */
-
 .estatisticas {
     margin: 1.5rem 1rem;
-    border: 2px solid white;
+    border: 2px solid var(--white);
     overflow: hidden;
     border-radius: 12px;
-    box-shadow:
-        /* 0 0 5px white, */
-        0 0 12px rgb(189, 151, 0);
+    box-shadow: 0 0 12px rgb(189, 151, 0);
 }
 
 .estatisticas div {
@@ -116,12 +116,15 @@ header {
 }
 
 .estatisticas div:nth-of-type(even) {
-    background-color: #000;
+    background-color: var(--black);
 }
 
 .estatisticas h3 {
-    background: linear-gradient(rgb(189, 151, 0), rgb(80, 60, 0), rgb(189, 151, 0));
-    color: black;
+    background:
+        linear-gradient(rgb(189, 151, 0),
+            rgb(100, 80, 0),
+            rgb(189, 151, 0));
+    color: var(--black);
     font-size: 24px;
     font-weight: 600;
     text-shadow: -.2px .2px gray;
@@ -130,45 +133,39 @@ header {
 }
 
 .estatisticas h4 {
-    color: black;
+    color: var(--black);
     display: inline-block;
     font-size: 18px;
     font-weight: 600;
-    /* padding: .5rem 1rem; */
     letter-spacing: 1px;
-    text-shadow: -1px 1px #000;
+    text-shadow: -1px 1px var(--black);
 }
 
 .estatisticas div:nth-of-type(even) h4 {
-    color: white;
-    /* text-shadow: -.8px .8px white;
-    background-color: #000; */
+    color: var(--white);
 }
 
 .estatisticas span {
-    color: rgb(0, 170, 0);
+    color: var(--dollar-sign);
     font-size: 18px;
     font-weight: 600;
-
     letter-spacing: 1px;
-    text-shadow: -1.2px 1.5px #000;
+    text-shadow: -1.2px 1.5px var(--black);
 }
 
-/* Lista de preços */
 
+/* Lista de preços */
 .list-prices {
     background: linear-gradient(transparent, rgb(131, 111, 0));
     padding: .65rem;
 }
 
 .title-third {
-    /* background: linear-gradient(red, black); */
     font-size: 20px;
     padding: 5px 10px;
-    color: white;
-    border-bottom: 3px solid gold;
-    text-shadow: 0 0 10px gold, 0 0 3px gold;
-    /* border: 3px solid black; */
+    color: var(--white);
+    border-bottom: 3px solid var(--main-color);
+    text-shadow: 0 0 10px var(--main-color), 0 0 3px var(--main-color);
     letter-spacing: 1px;
     margin-bottom: 20px;
     border-radius: 5px;
@@ -178,8 +175,8 @@ header {
     overflow: hidden;
     border-radius: 8px;
     margin-bottom: 10px;
-    border: 1px solid white;
-    box-shadow: 0 0 2px white;
+    border: 1px solid var(--white);
+    box-shadow: 0 0 2px var(--white);
 }
 
 .item-price p {
@@ -191,8 +188,8 @@ header {
 }
 
 .item-price span {
-    background-color: #111;
-    color: rgb(0, 170, 0);
+    background-color: var(--black-secundary);
+    color: var(--dollar-sign);
     font-size: 14px;
     font-weight: 600;
     padding: .5rem 1rem;
@@ -202,17 +199,17 @@ header {
 }
 
 
-
 /* rodape */
-
 footer {
+    background-color: var(--black-secundary);
     text-align: center;
-    color: white;
+    color: var(--white);
     padding: 5px 0;
 }
 
 footer p {
     font-size: 10px;
+    letter-spacing: 1px;
     margin-bottom: 2px;
 }
 
@@ -230,4 +227,203 @@ footer a {
 footer a:hover {
     text-decoration: none;
     color: rgb(170, 145, 0);
+}
+
+@media screen and (min-width: 768px) {
+
+    /* moedas */
+    .cryptos {
+        padding: .5rem .7rem;
+        margin: 3rem 4rem;
+    }
+
+    .btn {
+        font-size: 28px;
+        font-weight: 700;
+        padding: 15px 20px;
+        border-radius: 100px;
+    }
+
+    .btn.active {
+        transform: scale(1.125);
+    }
+
+    /* Sobre a Moeda */
+    .about {
+        margin: 3rem 1.25rem;
+    }
+
+    .about h2 {
+        letter-spacing: 4px;
+        font-size: 42px;
+        margin-bottom: 1.5rem;
+    }
+
+    .about p {
+        font-size: 24px;
+        line-height: 1.2em;
+        letter-spacing: 1px;
+    }
+
+    /* Estatisticas */
+    .estatisticas {
+        margin: 1.5rem 1.25rem;
+        overflow: hidden;
+    }
+
+    .estatisticas div {
+        padding: 1rem 1.25rem;
+    }
+
+    .estatisticas h3 {
+        font-size: 32px;
+        letter-spacing: 1.5px;
+        padding: .8rem 1rem;
+    }
+
+    .estatisticas h4 {
+        font-size: 24px;
+        letter-spacing: 2px;
+    }
+
+
+    .estatisticas span {
+        font-size: 24px;
+        letter-spacing: 2px;
+    }
+
+    /* Lista de preços */
+    .list-prices {
+        padding: 2rem 1.25em;
+    }
+
+    .title-third {
+        font-size: 24px;
+        padding: 5px 10px;
+        margin-bottom: 1.25rem;
+    }
+
+    .item-price {
+        margin-bottom: 1rem;
+    }
+
+    .item-price p {
+        font-size: 20px;
+        padding: .35rem .8rem;
+    }
+
+    .item-price span {
+        font-size: 18px;
+        padding: .6rem 1rem;
+        letter-spacing: 1px;
+    }
+
+    /* rodape */
+    footer {
+        padding: 1rem;
+    }
+
+    footer p {
+        font-size: 18px;
+        margin-bottom: .2rem;
+    }
+
+    footer h2 {
+        font-size: 22px;
+        letter-spacing: 1px;
+    }
+}
+
+
+@media screen and (min-width: 1024px) {
+    .cryptos {
+        padding: .5rem .7rem;
+        margin: 5rem 25rem;
+        border-radius: 100px;
+    }
+
+    .btn {
+        font-size: 48px;
+        padding: 1rem 2.5rem;
+        border-radius: 100px;
+    }
+
+    .btn.active {
+        transform: scale(1.125);
+    }
+
+    /* Sobre a Moeda */
+    .about {
+        max-width: 90vw;
+        margin: 3rem auto;
+    }
+
+    .about h2 {
+        font-size: 48px;
+    }
+
+    .about p {
+        font-size: 32px;
+        line-height: 1.5em;
+        letter-spacing: 2px;
+    }
+
+    /* Estatisticas */
+    .estatisticas {
+        max-width: 90vw;
+        margin: 3rem auto;
+    }
+
+    .estatisticas div {
+        padding: 1.25rem;
+    }
+
+    .estatisticas h3 {
+        font-size: 36px;
+        letter-spacing: 1px;
+        padding: .8rem 1rem;
+    }
+
+    .estatisticas h4 {
+        font-size: 32px;
+    }
+
+    .estatisticas span {
+        font-size: 32px;
+    }
+
+    /* Lista de preços */
+    .list-prices {
+        padding: 2rem 6.5rem;
+    }
+
+    .title-third {
+        font-size: 28px;
+    }
+
+    .item-price p {
+        font-size: 20px;
+        padding: .35rem .8rem;
+    }
+
+    .item-price span {
+        font-size: 18px;
+        padding: .6rem 1rem;
+        letter-spacing: 1px;
+    }
+
+    /* rodape */
+    footer {
+        padding: 1rem;
+    }
+
+    footer p {
+        font-size: 18px;
+        margin-bottom: .2rem;
+    }
+
+    footer h2 {
+        font-size: 22px;
+        letter-spacing: 1px;
+    }
 }

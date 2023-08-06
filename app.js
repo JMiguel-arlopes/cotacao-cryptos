@@ -9,6 +9,7 @@ async function puxarDadosAPI() {
         }
 
         const data = await response.json();
+        // console.log(data)
         atualizaDados(data)
 
     }
@@ -19,8 +20,25 @@ async function puxarDadosAPI() {
     setTimeout(puxarDadosAPI, 30000)
 }
 
-function atualizaDados(data) {
+async function conversorValorMoeda() {
+    try {
+        const response = await fetch('http://economia.awesomeapi.com.br/json/last/USD-BRL')
 
+        if (!response.ok) {
+            throw new Error('Erro na Resposta do conversor')
+        }
+
+        const data = await response.json();
+        const conversor = data.USDBRL.bid
+        return conversor
+
+    } catch (error) {
+        console.error('Erro na requisição do conversor:', error);
+    }
+}
+
+
+function atualizaDados(data) {
     incrementaDado("bitcoin", data.bitcoin)
     incrementaDado("ethereum", data.ethereum)
     incrementaDado("matic", data.polygon)
@@ -40,14 +58,22 @@ function incrementaDado(IDMoeda, jsonMoeda) {
     listaPrecos('historico', dataDiv, jsonMoeda)
 }
 
-function formataDolar(item, dataDiv, jsonMoeda) {
-    const text = dataDiv.querySelector(`[data-${item}] span`)
-    text.textContent = parseFloat(jsonMoeda[item]).toLocaleString('en', { style: 'currency', currency: 'USD' })
+async function formataDolar(item, dataDiv, jsonMoeda) {
+    try {
+        const conversor = await conversorValorMoeda();
+        const text = dataDiv.querySelector(`[data-${item}] span`)
+        text.textContent = parseFloat(conversor * jsonMoeda[item])
+            .toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
+    } catch {
+        console.error('Erro ao formatar o valor do dólar:', error);
+    }
 }
 
 function formataPorcentagem(item, dataDiv, jsonMoeda) {
     const text = dataDiv.querySelector(`[data-${item}] span`)
-    text.textContent = parseFloat(jsonMoeda[item]).toFixed(2).replace('.', ',') + '%'
+    text.textContent = parseFloat(jsonMoeda[item])
+        .toFixed(2)
+        .replace('.', ',') + '%'
 }
 
 function formataRank(item, dataDiv, jsonMoeda) {
@@ -65,10 +91,12 @@ function formataSimples(item, dataDiv, jsonMoeda) {
     text.textContent = parseInt(jsonMoeda[item])
 }
 
-function listaPrecos(item, dataDiv, jsonMoeda) {
+async function listaPrecos(item, dataDiv, jsonMoeda) {
+    const conversor = await conversorValorMoeda()
     for (i = 0; i < jsonMoeda.historico.length; i++) {
         const text = dataDiv.querySelector(`[data-${item}="${i}"] span`)
-        text.textContent = parseFloat(jsonMoeda.historico[i]).toLocaleString('en', { style: 'currency', currency: 'USD' })
+        text.textContent = parseFloat(jsonMoeda.historico[i] * conversor)
+            .toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
     }
 }
 
