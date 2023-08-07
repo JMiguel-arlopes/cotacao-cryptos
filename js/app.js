@@ -19,7 +19,7 @@ async function puxarDadosAPI() {
 
 async function conversorValorMoeda() {
     try {
-        const response = await fetch('http://economia.awesomeapi.com.br/json/last/USD-BRL')
+        const response = await fetch('https://economia.awesomeapi.com.br/json/last/USD-BRL')
 
         if (!response.ok) {
             throw new Error('Erro na Resposta do conversor')
