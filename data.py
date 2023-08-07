@@ -45,7 +45,7 @@ def root():
     if not hasattr(g, 'app_context'):
         g.app_context = app.app_context()
 
-    # Chama a função para obter os dados das moeda
+    
     with app.app_context():
         bitcoin_data = obter_dados_moeda("bitcoin")
         ethereum_data = obter_dados_moeda("ethereum")
