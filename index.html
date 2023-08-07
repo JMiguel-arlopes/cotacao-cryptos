@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mercado Bitcoin</title>
 
-    <link rel="stylesheet" href="style.css">
-    <script defer src="app.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <script defer src="js/buttons.js"></script>
+    <script defer src="js/app.js"></script>
 </head>
 
 <body>
@@ -18,10 +19,11 @@
             <h3 class="btn" data-box="3">MATIC</h3>
         </div>
     </header>
+
     <main>
-        <div class="container">
-            <div class="box active" id="bitcoin" data-box="1">
-                <div class="about">
+        <div class="box active" id="bitcoin" data-box="1">
+            <div class="bg">
+                <section class="about container">
                     <h2>Bitcoin</h2>
                     <p>
                         O Bitcoin é a primeira e mais proeminente criptomoeda descentralizada,
@@ -31,34 +33,37 @@
                         asseguram sua resistência a interferências externas. Esses atributos fazem
                         do Bitcoin uma escolha distinta e confiável em relação a outras criptomoedas.
                     </p>
-                </div>
+                </section>
 
-                <div class="estatisticas">
-                    <h3>Estatisticas:</h3>
-                    <div data-rank>
-                        <h4>Rank da Moeda:</h4>
-                        <span></span>
+                <section class="container estatisticas-container">
+                    <div class="estatisticas">
+                        <h3>Estatisticas:</h3>
+                        <div data-rank>
+                            <h4>Rank da Moeda:</h4>
+                            <span></span>
+                        </div>
+                        <div data-preco>
+                            <h4>Preço:</h4>
+                            <span></span>
+                        </div>
+                        <div data-capitalização>
+                            <h4>Capitalização de Mercado:</h4>
+                            <br><span></span>
+                        </div>
+                        <div data-fornecimento>
+                            <h4>Fornecimento em Circulação:</h4>
+                            <br><span></span>
+                        </div>
+                        <div data-percentualVariado24h>
+                            <h4>Variação nas últimas 24h:</h4>
+                            <span></span>
+                        </div>
                     </div>
-                    <div data-preco>
-                        <h4>Preço:</h4>
-                        <span></span>
-                    </div>
-                    <div data-capitalização>
-                        <h4>Capitalização de Mercado:</h4>
-                        <br><span></span>
-                    </div>
-                    <div data-fornecimento>
-                        <h4>Fornecimento em Circulação:</h4>
-                        <br><span></span>
-                    </div>
-                    <div data-percentualVariado24h>
-                        <h4>Variação nas últimas 24h:</h4>
-                        <span></span>
-                    </div>
-                </div>
-
+                </section>
+            </div>
+            <section class="container-list">
+                <h3 class="title-third">Veja a cotação dos últimos 5 dias:</h3>
                 <ul class="list-prices">
-                    <h3 class="title-third">Veja a cotação dos últimos 5 dias:</h3>
                     <li class="item-price" data-historico="0">
                         <p>Há um dia:</p>
                         <span></span>
@@ -80,10 +85,12 @@
                         <span></span>
                     </li>
                 </ul>
-            </div>
+            </section>
+        </div>
 
-            <div class="box" id="ethereum" data-box="2">
-                <div class="about">
+        <div class="box" id="ethereum" data-box="2">
+            <div class="bg">
+                <section class="about container">
                     <h2>Ethereum</h2>
                     <p>
                         A Ethereum se destaca como uma plataforma de criptomoeda
@@ -95,34 +102,38 @@
                         Sua abordagem mais ampla e suas aplicações variadas a tornam uma escolha
                         proeminente para desenvolvedores e empresas em busca de inovação na tecnologia blockchain.
                     </p>
-                </div>
+                </section>
 
-                <div class="estatisticas">
-                    <h3>Estatisticas:</h3>
-                    <div data-rank>
-                        <h4>Rank da Moeda:</h4>
-                        <span></span>
+                <section class="estatisticas-container container">
+                    <div class="estatisticas">
+                        <h3>Estatisticas:</h3>
+                        <div data-rank>
+                            <h4>Rank da Moeda:</h4>
+                            <span></span>
+                        </div>
+                        <div data-preco>
+                            <h4>Preço:</h4>
+                            <span></span>
+                        </div>
+                        <div data-capitalização>
+                            <h4>Capitalização de Mercado:</h4>
+                            <br><span></span>
+                        </div>
+                        <div data-fornecimento>
+                            <h4>Fornecimento em Circulação:</h4>
+                            <br><span></span>
+                        </div>
+                        <div data-percentualVariado24h>
+                            <h4>Variação nas últimas 24h:</h4>
+                            <span></span>
+                        </div>
                     </div>
-                    <div data-preco>
-                        <h4>Preço:</h4>
-                        <span></span>
-                    </div>
-                    <div data-capitalização>
-                        <h4>Capitalização de Mercado:</h4>
-                        <br><span></span>
-                    </div>
-                    <div data-fornecimento>
-                        <h4>Fornecimento em Circulação:</h4>
-                        <br><span></span>
-                    </div>
-                    <div data-percentualVariado24h>
-                        <h4>Variação nas últimas 24h:</h4>
-                        <span></span>
-                    </div>
-                </div>
+                </section>
+            </div>
 
+            <section class="container-list">
+                <h3 class="title-third">Veja a cotação dos últimos 5 dias:</h3>
                 <ul class="list-prices">
-                    <h3 class="title-third">Veja a cotação dos últimos 5 dias:</h3>
                     <li class="item-price" data-historico="0">
                         <p>Há um dia:</p>
                         <span></span>
@@ -144,10 +155,12 @@
                         <span></span>
                     </li>
                 </ul>
-            </div>
+            </section>
+        </div>
 
-            <div class="box" id="matic" data-box="3">
-                <div class="about">
+        <div class="box" id="matic" data-box="3">
+            <div class="bg">
+                <section class="container about">
                     <h2>MATIC</h2>
                     <p>
                         A Polygon (MATIC) é uma plataforma de escalabilidade da Ethereum que soluciona problemas de
@@ -166,34 +179,39 @@
                         popular
                         para inovação e crescimento no ecossistema de blockchain.
                     </p>
-                </div>
+                </section>
 
-                <div class="estatisticas">
-                    <h3>Estatisticas:</h3>
-                    <div data-rank>
-                        <h4>Rank da Moeda:</h4>
-                        <span></span>
+                <section class="container estatisticas-container">
+                    <div class="estatisticas">
+                        <h3>Estatisticas:</h3>
+                        <div data-rank>
+                            <h4>Rank da Moeda:</h4>
+                            <span></span>
+                        </div>
+                        <div data-preco>
+                            <h4>Preço:</h4>
+                            <span></span>
+                        </div>
+                        <div data-capitalização>
+                            <h4>Capitalização de Mercado:</h4>
+                            <br><span></span>
+                        </div>
+                        <div data-fornecimento>
+                            <h4>Fornecimento em Circulação:</h4>
+                            <br><span></span>
+                        </div>
+                        <div data-percentualVariado24h>
+                            <h4>Variação nas últimas 24h:</h4>
+                            <span></span>
+                        </div>
                     </div>
-                    <div data-preco>
-                        <h4>Preço:</h4>
-                        <span></span>
-                    </div>
-                    <div data-capitalização>
-                        <h4>Capitalização de Mercado:</h4>
-                        <br><span></span>
-                    </div>
-                    <div data-fornecimento>
-                        <h4>Fornecimento em Circulação:</h4>
-                        <br><span></span>
-                    </div>
-                    <div data-percentualVariado24h>
-                        <h4>Variação nas últimas 24h:</h4>
-                        <span></span>
-                    </div>
-                </div>
+                </section>
 
+            </div>
+
+            <section class="container-list">
+                <h3 class="title-third">Veja a cotação dos últimos 5 dias:</h3>
                 <ul class="list-prices">
-                    <h3 class="title-third">Veja a cotação dos últimos 5 dias:</h3>
                     <li class="item-price" data-historico="0">
                         <p>Há um dia:</p>
                         <span></span>
@@ -215,7 +233,7 @@
                         <span></span>
                     </li>
                 </ul>
-            </div>
+            </section>
         </div>
     </main>
 
