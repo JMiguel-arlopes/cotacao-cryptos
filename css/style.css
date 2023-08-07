@@ -1,0 +1,516 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Roboto&display=swap');
+
+:root {
+    --bg-header: linear-gradient(rgb(209, 0, 0), #021449);
+    /* rgb(23, 23, 185) */
+    /* #3137db */
+    --main-color: rgb(255, 217, 0);
+    --black: #000;
+    --black-secundary: #111;
+    --white: #fff;
+    --dollar-sign: rgb(0, 170, 0);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--black-secundary);
+    font-family: 'Poppins', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow-x: hidden;
+}
+
+header {
+    width: 100%;
+    background: var(--bg-header);
+    padding: 1rem;
+}
+
+main {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.bg {
+    background-image:
+        linear-gradient(rgba(0, 0, 0, .3), #111),
+        url(https://i.pinimg.com/564x/3f/a1/9e/3fa19e5d5fd6ddee8c5c520006c2714a.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.container {
+    padding: 1.25rem 1rem;
+}
+
+/* moedas */
+.cryptos {
+    background-color: var(--black);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .2rem .4rem;
+    border-radius: 40px;
+}
+
+.btn {
+    cursor: pointer;
+    background-color: var(--main-color);
+    color: var(--black);
+    border: 3px solid var(--black);
+    padding: 5px 10px;
+    border-radius: 20px;
+    opacity: .5;
+    transition: .4s;
+}
+
+.btn.active {
+    opacity: 1;
+    transform: scale(1.12);
+}
+
+/* Sobre a Moeda */
+.box {
+    /* background: linear-gradient(var(--black), rgba(40, 40, 40, 1)); */
+    text-align: start;
+    max-width: 100%;
+    display: none;
+}
+
+.box.active {
+    display: block;
+}
+
+.about {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.about h2 {
+    display: block;
+    width: 100%;
+    color: var(--main-color);
+    letter-spacing: 2px;
+    text-shadow:
+        -1px 1px rgb(255, 255, 166),
+        0 0 2px var(--main-color);
+    border-bottom: 3px solid var(--main-color);
+    font-size: 28px;
+    font-weight: 900;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+
+.about p {
+    font-size: 16px;
+    color: var(--white);
+    letter-spacing: .5px;
+    font-weight: 500;
+}
+
+
+/* Estatisticas */
+.estatisticas {
+    border: 2px solid var(--white);
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 0 12px rgb(189, 151, 0);
+}
+
+.estatisticas div {
+    background-color: #f5f5f5;
+    padding: .5rem 1rem;
+}
+
+.estatisticas div:nth-of-type(even) {
+    background-color: var(--black);
+}
+
+.estatisticas h3 {
+    background:
+        linear-gradient(rgb(189, 151, 0),
+            rgb(100, 80, 0),
+            rgb(189, 151, 0));
+    color: var(--black);
+    font-size: 24px;
+    font-weight: 600;
+    text-shadow: -.2px .2px gray;
+    letter-spacing: 1.5px;
+    padding: 5px 10px;
+}
+
+.estatisticas h4 {
+    color: var(--black);
+    display: inline-block;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-shadow: -1px 1px var(--black);
+}
+
+.estatisticas div:nth-of-type(even) h4 {
+    color: var(--white);
+}
+
+.estatisticas span {
+    color: var(--dollar-sign);
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-shadow: -1.2px 1.5px var(--black);
+}
+
+
+/* Lista de preços */
+
+.container-list {
+    padding: .65rem .8rem;
+    background: linear-gradient(transparent, rgb(131, 111, 0));
+}
+
+.title-third {
+    font-size: 20px;
+    padding: 5px 10px;
+    color: var(--white);
+    border-bottom: 3px solid var(--main-color);
+    text-shadow: 0 0 10px var(--main-color), 0 0 3px var(--main-color);
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.item-price {
+    overflow: hidden;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    border: 1px solid var(--white);
+    box-shadow: 0 0 2px var(--white);
+}
+
+.item-price p {
+    display: block;
+    background-color: #eee;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 3px 10px;
+}
+
+.item-price span {
+    background-color: var(--black-secundary);
+    color: var(--dollar-sign);
+    font-size: 14px;
+    font-weight: 600;
+    padding: .5rem 1rem;
+    letter-spacing: 1px;
+    display: block;
+    width: 100%;
+}
+
+
+/* rodape */
+footer {
+    background-color: var(--black-secundary);
+    text-align: center;
+    color: var(--white);
+    padding: 5px 0;
+}
+
+footer p {
+    font-size: 10px;
+    letter-spacing: 1px;
+    margin-bottom: 2px;
+}
+
+footer h2 {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: .4px;
+}
+
+footer a {
+    text-decoration: none;
+    color: rgb(145, 145, 145);
+}
+
+footer a:hover {
+    text-decoration: none;
+    color: rgb(170, 145, 0);
+}
+
+
+@media screen and (min-width: 768px) {
+
+    header {
+        padding: 2.5rem 3rem;
+    }
+
+    /* moedas */
+    .cryptos {
+        padding: .5rem .7rem;
+        /* margin: 3rem 4rem; */
+    }
+
+    .btn {
+        font-size: 32px;
+        font-weight: 700;
+        padding: 15px 20px;
+        border-radius: 100px;
+    }
+
+    .btn.active {
+        transform: scale(1.125);
+    }
+
+    /* Sobre a Moeda */
+
+    .container {
+        padding: 2rem 2rem;
+    }
+
+    .about {
+        /* margin: 3rem 1.25rem; */
+    }
+
+    .about h2 {
+        letter-spacing: 4px;
+        font-size: 46px;
+        margin-bottom: 1.5rem;
+    }
+
+    .about p {
+        font-size: 28px;
+        line-height: 1.5em;
+        letter-spacing: 1px;
+    }
+
+    /* Estatisticas */
+    .estatisticas {
+        /* margin: 1.5rem 1.25rem; */
+    }
+
+    .estatisticas div {
+        padding: 1rem 1.25rem;
+    }
+
+    .estatisticas h3 {
+        font-size: 36px;
+        font-weight: 900;
+        letter-spacing: 1.5px;
+        padding: .8rem 1rem;
+    }
+
+    .estatisticas h4 {
+        font-size: 32px;
+        letter-spacing: 3px;
+    }
+
+
+    .estatisticas span {
+        /* text-shadow: -2px 2px #000; */
+        font-size: 34px;
+        letter-spacing: 2px;
+    }
+
+    /* Lista de preços */
+    .container-list {
+        padding: 1rem 2rem;
+    }
+
+    .title-third {
+        font-size: 32px;
+        padding: 0 15px 10px;
+        margin-bottom: 2.2rem;
+        border-radius: 10px;
+        border-bottom: 5px solid var(--main-color);
+    }
+
+    .item-price {
+        margin-bottom: 2rem;
+    }
+
+    .item-price p {
+        font-size: 32px;
+        font-weight: 800;
+        padding: .5rem 1rem;
+    }
+
+    .item-price span {
+        font-size: 28px;
+        padding: .8rem 1rem;
+        letter-spacing: 1px;
+    }
+
+    /* rodape */
+    footer {
+        padding: 1rem;
+    }
+
+    footer p {
+        font-size: 24px;
+        margin-bottom: .2rem;
+    }
+
+    footer h2 {
+        font-size: 26px;
+        letter-spacing: 1px;
+    }
+}
+
+
+@media screen and (min-width: 1024px) {
+    header {
+        background: (rgb(209, 0, 0), darkblue);
+        max-height: 100px;
+        padding: 2rem 5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
+
+    main {
+        margin-top: 100px;
+    }
+
+    .bg {
+        background-image: none;
+    }
+
+    .container {
+        padding: 2rem 5rem;
+    }
+
+    .cryptos {
+        padding: .5rem 1rem;
+        border-radius: 100px;
+        overflow: hidden;
+    }
+
+    .btn {
+        font-size: 24px;
+        padding: 1rem 2rem;
+        border-radius: 100px;
+    }
+
+    .btn:not(:last-child) {
+        margin-right: 7.5rem;
+    }
+
+    .btn.active {
+        transform: scale(1.125);
+    }
+
+    /* Sobre a Moeda */
+    .about {
+        background-image: linear-gradient(transparent, #000),
+            url(https://wallpapercave.com/wp/wp4678542.jpg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        min-height: calc(100vh - 100px);
+    }
+
+    .about h2 {
+        font-size: 48px;
+    }
+
+    .about p {
+        font-size: 32px;
+        line-height: 1.5em;
+        letter-spacing: 2px;
+    }
+
+    /* Estatisticas */
+
+    .estatisticas-container {
+        background: linear-gradient(var(--black), var(--black-secundary));
+    }
+
+    .estatisticas {
+        max-width: 90vw;
+        margin: 3rem auto;
+    }
+
+    .estatisticas div {
+        padding: 1.25rem;
+    }
+
+    .estatisticas h3 {
+        font-size: 36px;
+        letter-spacing: 1px;
+        padding: .8rem 1rem;
+    }
+
+    .estatisticas h4 {
+        font-size: 32px;
+    }
+
+    .estatisticas span {
+        font-size: 32px;
+    }
+
+    /* Lista de preços */
+    .container-list {
+        background: linear-gradient(var(--black-secundary), rgb(131, 111, 0));
+    }
+
+    .title-third {
+        font-size: 28px;
+    }
+
+    .list-prices {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem 0rem;
+    }
+
+    .item-price {
+        flex: 1;
+        margin: 0 .5rem;
+    }
+
+    .item-price p {
+        text-align: center;
+        font-size: 20px;
+        padding: .35rem .8rem;
+    }
+
+    .item-price span {
+        text-align: center;
+        font-size: 18px;
+        padding: .6rem 1rem;
+        letter-spacing: 1px;
+    }
+
+    /* rodape */
+    footer {
+        padding: 1rem;
+    }
+
+    footer p {
+        font-size: 18px;
+        margin-bottom: .2rem;
+    }
+
+    footer h2 {
+        font-size: 22px;
+        letter-spacing: 1px;
+    }
+}
